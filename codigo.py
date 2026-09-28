@@ -83,6 +83,28 @@ while ativo:
     elif pergunta == 1:
          print(f"{'Código':<15} {'Nome':<30} {'Sala':<5} {'Quantidade':<11} {'Estado':<18}")
          print("-" * 79)
-         texto_final = "\n".join(f"{num:<15} {info['nome']:<30} {info['sala']:<5} {info['quantidade']:<11} {info['estado']:<18}" for num, info in inventario.items())
+         texto_final = "\n".join(
+            f"{num:<10} {info['nome'].title():<25} {info['sala']:<10} "
+            f"{info['quantidade']:<10} {info['estado']:<18}"
+            for num, info in inventario.items()
+         )
          print(texto_final)
+         conta_inventario = len(inventario)
+         if conta_inventario == 0:
+             print("O inventário está vazio")
+         else:
+             print(f"Total de Registos: {conta_inventario}")
+             
+    elif pergunta == 2:
+        while True:
+            codigo = input("Código do equipamento: ").strip().upper()
 
+            if not codigo:
+                print("Precisas escrever algo no código")
+                continue
+
+            if codigo in inventario:
+                print("Esse código já existe no inventário")
+                continue
+
+            break
