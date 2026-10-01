@@ -94,6 +94,8 @@ while ativo:
              print("O inventário está vazio")
          else:
              print(f"Total de Registos: {conta_inventario}")
+
+         input("Toque enter para continuar")
              
     elif pergunta == 2:
         while True:
@@ -105,6 +107,51 @@ while ativo:
 
             if codigo in inventario:
                 print("Esse código já existe no inventário")
-                continue
+                break
+
+            while True:
+                nome = input("Nome do Equipamento: ").strip()
+                if not nome:
+                    print("Precisas escrever algo no nome.")
+                    continue
+                break
+                
+
+            while True:
+                tipo = input(f"Qual o tipo do equipamento ({(tipos)}): ").strip().lower()
+                if not tipo:
+                    print("O tipo não pode ficar vazio.")
+                    continue
+                if tipo not in tipos:
+                    print(f"O tipo '{tipo}' não é válido. Escolha um da lista.")
+                    continue
+                break
+
+            sala_valido = True
+            while sala_valido:
+                print("Salas disponíveis:", salas)
+                sala = input("Qual a Sala a que pertence: ").upper()
+            
+                if sala == "":
+                    print("A sala não pode ficar vazia")
+                elif sala not in salas:
+                    print("A sala não existe. Escolha uma da lista.")
+                else:
+                    sala_valido = False
+
+            quantidade_valida = True
+            while quantidade_valida:
+                qnt_input = input("Quantos equipamentos tem?: ")
+            
+                if qnt_input == "":
+                    print("A quantidade não pode ficar vazia")
+                else:
+                    quantidade = int(qnt_input)
+                if quantidade <= 0:
+                    print("A quantidade não pode ser igual ou menor que 0")
+                else:
+                    quantidade_valida = False
+            
+                break
 
             break
